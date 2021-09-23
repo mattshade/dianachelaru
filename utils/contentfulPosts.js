@@ -1,5 +1,5 @@
-const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+const space = 'raaqi4zh67uq';
+const accessToken = '6L3NAIGC33wGiPPyy_yfLIZngTuCNILmAzvZ7Xm6C54';
 
 const client = require('contentful').createClient({
   space: space,

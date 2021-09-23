@@ -10,8 +10,23 @@
   },
   "dependencies": {
     "contentful": "^7.14.6",
+    "fs": "0.0.1-security",
+    "jquery": "^3.6.0",
+    "jsdom": "^17.0.0",
+    "lightgallery": "^2.2.1",
+    "net": "^1.0.2",
     "next": "10.0.6",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-photo-gallery": "^8.0.0",
+    "tls": "0.0.1"
+  },
+  "browser": {
+    "child_process": false,
+    "fs": false,
+    "tls": "empty"
+  },
+  "node": {
+    "tls": "empty"
   }
 }
