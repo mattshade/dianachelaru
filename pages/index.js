@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Head from 'next/head'
 import { fetchEntries } from '@utils/contentfulPosts'
 import Header from '@components/Header'
@@ -15,34 +15,28 @@ import 'lightgallery/css/lg-thumbnail.css';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
-
-
-
-
-
 export default function Home({posts}) {
 const paintingsHolder = []
   const paintings = posts[0].artwork.map((p, i) => {
-    console.log('paintings: ', p.fields)
+    // console.log('paintings: ', p.fields)
     return(paintingsHolder.push({src: `https:${p.fields.file.url}`,thumb: `https:${p.fields.file.url}?w=600`,responsive: `https:${p.fields.file.url}`, title: `${p.fields.title}` }))})
   
-  console.log('paintingsHolder: ', paintingsHolder)
-  console.log('lg: ', LightGallery)
+  // console.log('paintingsHolder: ', paintingsHolder)
+  // console.log('lg: ', LightGallery)
   const onInit = () => {
-    console.log('lightGallery has been initialized');
+    // console.log('lightGallery has been initialized');
 };
 
     const [items] = useState(paintingsHolder);
     const getItems = useCallback(() => {
-      return items.map((item) => {
+      return items.map((item, i) => {
           return (
               <li
-                  key={item.id}
+                  key={i}
                   data-lg-size={item.size}
                   className="gallery-item"
                   data-src={item.src}
                   data-sub-html={item.title}
-                  // style={{width: "50px", display: "flex"}}
               >
                   <img className="img-responsive" src={item.thumb} />
               </li>
@@ -54,13 +48,14 @@ const paintingsHolder = []
   return (
     <div className="container">
       <Head>
-        <title>Next + Contentful Starterz</title>
+        <title>diana chelaru | fine art</title>
         <link rel="icon" href="/favicon.ico" />
-        </Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"></link>
+      </Head>
 
-      <main>
-        
-        
+      <main>   
         
       <ul className={"gallery-container"}>
       <Header />
@@ -86,11 +81,6 @@ const paintingsHolder = []
       <Footer />
 
       <style jsx>{`
-      
-        
-
-        
-
         
       `}</style>
 
@@ -99,7 +89,7 @@ const paintingsHolder = []
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+          font-family: 'Playfair Display', serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
             Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
 
@@ -137,7 +127,6 @@ const paintingsHolder = []
 export async function getStaticProps() {
   const res = await fetchEntries()
   const posts = await res.map((p) => {
-    // console.log('posts: ', p)
     return p.fields
   })
 
@@ -147,6 +136,3 @@ export async function getStaticProps() {
     },
   }
 }
-
-
-
