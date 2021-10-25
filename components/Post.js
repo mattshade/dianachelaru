@@ -12,7 +12,7 @@ function Post({ image, title }) {
 
       <style jsx>{`
         .post {
-          position: relative;
+          // position: relative;
           margin: 10px;
           width: 300px;
           color: white;

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react"
 import Head from 'next/head'
 import { fetchEntries } from '@utils/contentfulPosts'
 import Header from '@components/Header'
@@ -48,10 +48,11 @@ const paintingsHolder = []
   return (
     <div className="container">
       <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>diana chelaru | fine art</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"></link>
       </Head>
 
@@ -67,7 +68,7 @@ const paintingsHolder = []
           thumbnail={false}
           licenseKey={'F216EF00-0E0049AE-8C365905-B584B23C'}
           animateThumb={false}
-          zoomFromOrigin={false}
+          zoomFromOrigin={true}
           allowMediaOverlap={true}
           toggleThumb={true}
     >
@@ -89,6 +90,7 @@ const paintingsHolder = []
         body {
           padding: 0;
           margin: 0;
+          min-height: -webkit-fill-available;
           font-family: 'Playfair Display', serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
             Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
@@ -101,25 +103,57 @@ const paintingsHolder = []
         }
         ul {
           list-style: none;
+          padding: 0px;
         }
         .gallery-item { 
           cursor: pointer;
           padding: 3px 5px;
-          
         }
+        
         .gallery-item img {
           object-fit: cover;
-          aspect-ratio: unset;
-          aspect-ratio:1/1;
-          height: 20vh;
-          
+          height: 5.5em;
+          width: 5.5em;
+          -webkit-transition: all .2s ease-in-out;
+          -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;            
         }
+
+        .gallery-container {
+          margin: 0 auto;
+          max-width: 295px;
+        }
+        
         .gallery-container .lg-react-element  {
           display: flex;
           flex-wrap: wrap;
-          width: 100%;
         }
+
+        @media (min-width: 768px) {
+          .gallery-item img {
+            height: 8em;
+            width: 8em;
+          }
+          .gallery-container {
+            max-width: 690px;
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .gallery-item img {
+            height: 10em;
+            width: 10em;
+          }
+          .gallery-container {
+            max-width: 1200px;
+          }
+        }
+      }
+        
+
       `}</style>
+
+
     </div>
   )
 }
