@@ -15,40 +15,40 @@ import 'lightgallery/css/lg-thumbnail.css';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
-export default function Home({posts}) {
-const paintingsHolder = []
+export default function Home({ posts }) {
+  const paintingsHolder = []
   const paintings = posts[0].artwork.map((p, i) => {
-    // console.log('paintings: ', p.fields)
-    return(paintingsHolder.push({src: `https:${p.fields.file.url}`,thumb: `https:${p.fields.file.url}?w=600`,responsive: `https:${p.fields.file.url}`, title: `${p.fields.title}` }))})
-  
+    // console.log('paintings: ', p.fields?.file?.url)
+    return (paintingsHolder.push({ src: `https:${p.fields?.file?.url}`, thumb: `https:${p.fields?.file?.url}?w=600`, responsive: `https:${p.fields?.file?.url}`, title: `${p.fields?.title}` }))
+  })
   // console.log('paintingsHolder: ', paintingsHolder)
   // console.log('lg: ', LightGallery)
   const onInit = () => {
     // console.log('lightGallery has been initialized');
-};
+  };
 
-    const [items] = useState(paintingsHolder);
-    const getItems = useCallback(() => {
-      return items.map((item, i) => {
-          return (
-              <li
-                  key={i}
-                  data-lg-size={item.size}
-                  className="gallery-item"
-                  data-src={item.src}
-                  data-sub-html={item.title}
-              >
-                  <img className="img-responsive" src={item.thumb} />
-              </li>
-          );
-      });
+  const [items] = useState(paintingsHolder);
+  const getItems = useCallback(() => {
+    return items.map((item, i) => {
+      return (
+        <li
+          key={i}
+          data-lg-size={item.size}
+          className="gallery-item"
+          data-src={item.src}
+          data-sub-html={item.title}
+        >
+          <img className="img-responsive" src={item.thumb} />
+        </li>
+      );
+    });
   }, [items]);
 
-  
+
   return (
     <div className="container">
       <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>diana chelaru | fine art</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,27 +56,27 @@ const paintingsHolder = []
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"></link>
       </Head>
 
-      <main>   
-        
-      <ul className={"gallery-container"}>
-      <Header />
-        <LightGallery
-          id={"animated-thumbnails"}
-          onInit={onInit}
-          speed={500}
-          plugins={[lgThumbnail, lgZoom]}
-          thumbnail={false}
-          licenseKey={'F216EF00-0E0049AE-8C365905-B584B23C'}
-          animateThumb={false}
-          zoomFromOrigin={true}
-          allowMediaOverlap={true}
-          toggleThumb={true}
-    >
-      {getItems()}
-      </LightGallery>
-      </ul>
-        
-        
+      <main>
+
+        <ul className={"gallery-container"}>
+          <Header />
+          <LightGallery
+            id={"animated-thumbnails"}
+            onInit={onInit}
+            speed={500}
+            plugins={[lgThumbnail, lgZoom]}
+            thumbnail={false}
+            licenseKey={'F216EF00-0E0049AE-8C365905-B584B23C'}
+            animateThumb={false}
+            zoomFromOrigin={true}
+            allowMediaOverlap={true}
+            toggleThumb={true}
+          >
+            {getItems()}
+          </LightGallery>
+        </ul>
+
+
       </main>
 
       <Footer />
