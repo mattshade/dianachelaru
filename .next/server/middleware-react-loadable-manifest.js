@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"pages/index.js -> lightgallery/react\":{\"id\":\"pages/index.js -> lightgallery/react\",\"files\":[\"static/chunks/node_modules_lightgallery_react_Lightgallery_es5_js.js\"]}}"
